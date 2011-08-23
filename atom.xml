@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title>The RESTful Labs Blog</title>
+  <link href="http://blog.restful-labs.com/atom.xml" rel="self"/>
+  <link href="http://blog.restful-labs.com/"/>
+  <updated>2011-08-23T18:10:29-04:00</updated>
+  <id>http://blog.restful-labs.com/</id>
+  <author>
+    <name>The RESTful Labs Team</name>
+    
+  </author>
+
+  
+</feed>
