@@ -3,9 +3,9 @@
 # ----------------------- #
 
 url: http://blog.restful-labs.com
-title: The RESTful Labs Blog
-subtitle: The Official Blog of RESTful Labs
-author: The RESTful Labs Team
+title: RESTful Blog
+subtitle: The official blog of RESTful Labs
+author: RESTful Labs
 simple_search: http://google.com/search
 
 # RSS / Email (optional) subscription links (change if using something like Feedburner)
