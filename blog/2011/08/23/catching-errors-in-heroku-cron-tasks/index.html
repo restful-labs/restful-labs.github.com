@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>RESTful Blog</title>
+  <title>RESTful Blog: Catching Errors in Heroku Cron Tasks</title>
   <meta name="author" content="RESTful Labs">
   
 
@@ -16,7 +16,7 @@
 
   
 
-  <link rel="canonical" href="http://blog.restful-labs.com/index.html"/>
+  <link rel="canonical" href="http://blog.restful-labs.com/blog/2011/08/23/catching-errors-in-heroku-cron-tasks/"/>
   <link href="/favicon.png" rel="shortcut icon" />
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -83,15 +83,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
-
-
-
-  <article>
-    
+      <div>
+<article class="hentry">
+  
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/08/23/catching-errors-in-heroku-cron-tasks/">Catching Errors in Heroku Cron Tasks</a></h1>
+      <h1 class="entry-title">Catching Errors in Heroku Cron Tasks</h1>
     
     
       <p class="meta">
@@ -107,7 +104,7 @@
   </header>
 
 
-  <div class="entry-content"><p>Once we started integrating <a href="http://www.restfulmetrics.com">RESTful Metrics</a> into our own applications, we quickly ran into some problems with the way we were using the task to invoke other Rake tasks.</p>
+<div class="entry-content"><p>Once we started integrating <a href="http://www.restfulmetrics.com">RESTful Metrics</a> into our own applications, we quickly ran into some problems with the way we were using the task to invoke other Rake tasks.</p>
 
 <p>Our <code>cron.rake</code> looked something like this:</p>
 
@@ -165,31 +162,62 @@
 
 <p>What do you guys do?</p>
 </div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Mauricio Gomes</span></span>
+
+      
+
+
+
+
+<time datetime="2011-08-23 21:10:00 -0400" pubdate  updated >Aug 23<span>rd</span>, 2011</time>
+
+
+
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.restful-labs.com/blog/2011/08/23/catching-errors-in-heroku-cron-tasks/" data-via="RESTfulLabs" data-counturl="http://blog.restful-labs.com/blog/2011/08/23/catching-errors-in-heroku-cron-tasks/" >Tweet</a>
   
   
+  <g:plusone size="medium"></g:plusone>
+  
+</div>
 
-
-  </article>
-
-<nav role="pagination">
-  <div>
     
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</nav>
+  </footer>
+</article>
 
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread"><div id="disqus_thread"></div>
 <script type="text/javascript">
-    var disqus_shortname = 'restfulblog';
-    (function () {
-      var s = document.createElement('script'); s.async = true;
-      s.type = 'text/javascript';
-      s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-      (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
+  var disqus_shortname = 'restfulblog';
+  var disqus_identifier = 'http://blog.restful-labs.com/blog/2011/08/23/catching-errors-in-heroku-cron-tasks/';
+  var disqus_url = 'http://blog.restful-labs.com/blog/2011/08/23/catching-errors-in-heroku-cron-tasks/';
+  //var disqus_developer = 1;
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
 </script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
+
 <aside role=sidebar>
   
     <section>
@@ -224,6 +252,7 @@
 
   
 </aside>
+
 
     </div>
   </div>

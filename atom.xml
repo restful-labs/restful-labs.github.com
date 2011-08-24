@@ -4,12 +4,66 @@
   <title>RESTful Blog</title>
   <link href="http://blog.restful-labs.com/atom.xml" rel="self"/>
   <link href="http://blog.restful-labs.com/"/>
-  <updated>2011-08-23T20:14:24-04:00</updated>
+  <updated>2011-08-23T21:45:12-04:00</updated>
   <id>http://blog.restful-labs.com/</id>
   <author>
     <name>RESTful Labs</name>
     
   </author>
 
+  
+  <entry>
+    <title>Catching Errors in Heroku Cron Tasks</title>
+    <link href="http://blog.restful-labs.com/blog/2011/08/23/catching-errors-in-heroku-cron-tasks/"/>
+    <updated>2011-08-23T21:10:00-04:00</updated>
+    <id>http://blog.restful-labs.com/blog/2011/08/23/catching-errors-in-heroku-cron-tasks</id>
+    <content type="html">&lt;p&gt;Once we started integrating &lt;a href=&quot;http://www.restfulmetrics.com&quot;&gt;RESTful Metrics&lt;/a&gt; into our own applications, we quickly ran into some problems with the way we were using the task to invoke other Rake tasks.&lt;/p&gt;
+
+&lt;p&gt;Our &lt;code&gt;cron.rake&lt;/code&gt; looked something like this:&lt;/p&gt;
+
+&lt;p&gt;``` ruby&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;desc &quot;Heroku Cron Task&quot;
+task :cron =&amp;gt; :environment do
+  Rake::Task[&quot;accounts:bill&quot;].invoke
+  Rake::Task[&quot;accounts:expire&quot;].invoke
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;```&lt;/p&gt;
+
+&lt;p&gt;As we needed our cron to do more, we just invoked more tasks from within the cron task.&lt;/p&gt;
+
+&lt;p&gt;The problem with this approach is that once you start stacking code in your cron task, there is a chance that one of your tasks in the stack will raise an exception and prevent the remaining tasks from being invoked. Worse, unless you check your cron logs frequently, it's likely that your developers aren't aware that these tasks are failing.&lt;/p&gt;
+
+&lt;p&gt;In our case, we had created some tasks near the end of the cron stack that sent some data points to RESTful Metrics for aggregation. On the days that our cron script encountered an exception, metrics weren't collected.&lt;/p&gt;
+
+&lt;p&gt;To fix this, we've started to wrap each individual task invocation around a begin/rescue/end block and we send the exceptions to &lt;a href=&quot;http://airbrakeapp.com&quot;&gt;Airbrake&lt;/a&gt;. This means that errors generate emails to developers and an error in one task doesn't prevent the remaining tasks from running. The above cron script was re-written to:&lt;/p&gt;
+
+&lt;p&gt;``` ruby&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;desc &quot;Heroku Cron Task&quot;
+task :cron =&amp;gt; :environment do
+   begin
+     Rake::Task[&quot;accounts:bill&quot;].invoke
+   rescue
+      HoptoadNotifier.notify($!)
+   end
+
+   begin
+     Rake::Task[&quot;accounts:expire&quot;].invoke
+   rescue
+      HoptoadNotifier.notify($!)
+   end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;```&lt;/p&gt;
+
+&lt;p&gt;This is a little verbose, but it does the trick for now. Ideally there would be some method that automatically wraps each task invocation in the cron task. This would ensure developers would automatically be protected and the cron task wouldn't become bloated.&lt;/p&gt;
+
+&lt;p&gt;What do you guys do?&lt;/p&gt;
+</content>
+  </entry>
   
 </feed>

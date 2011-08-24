@@ -1,15 +1,21 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
+        <loc>
+            http://blog.restful-labs.com/blog/2011/08/23/catching-errors-in-heroku-cron-tasks/
+        </loc>
+        <lastmod>2011-08-23T21:41:36-04:00</lastmod>
+    </url>
+    <url>
         <loc>http://blog.restful-labs.com/about/</loc>
         <lastmod>2011-08-23T20:11:34-04:00</lastmod>
     </url>
     <url>
         <loc>http://blog.restful-labs.com/blog/archives/</loc>
-        <lastmod>2011-08-23T18:07:17-04:00</lastmod>
+        <lastmod>2011-08-23T21:41:36-04:00</lastmod>
     </url>
     <url>
         <loc>http://blog.restful-labs.com/</loc>
-        <lastmod>2011-08-23T18:07:17-04:00</lastmod>
+        <lastmod>2011-08-23T21:41:36-04:00</lastmod>
     </url>
 </urlset>
